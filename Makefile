@@ -1,4 +1,4 @@
 redis:
-	redis components/redis.sh
+	@bash components/redis.sh
 cart:
-	cart components/cart.sh
+	@bash components/cart.sh
