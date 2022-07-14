@@ -16,4 +16,6 @@ rabbitmq:
 	@bash components/rabbitmq.sh
 catalogue:
 	@bash components/catalogue.sh
+mysql:
+	@bash components/mysql.sh
 
