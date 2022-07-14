@@ -1,1 +1,1 @@
-echo Install redis Component
+echo Install redis Components
