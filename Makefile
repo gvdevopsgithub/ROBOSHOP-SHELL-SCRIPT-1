@@ -1,4 +1,4 @@
 frontend:
 	@bash components/frontend.sh
-catalogue:
-	@bash compnents/catalouge.sh
+catalouge:
+	@bash compnents/catalogue.sh
