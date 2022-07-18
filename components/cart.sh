@@ -10,7 +10,7 @@ mv cart-main cart
 cd cart
 npm install
 
-set -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' /home/roboshop/cart/systemd.service
+set -i -e 's/REDIS_ENDPOINT/redis.devopsb656.online/' -e 's/CATALOGUE_ENDPOINT/catalogue.devopsb656.online/' /home/roboshop/cart/systemd.service
 mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.service
 systemctl daemon-reload
 systemctl start cart
