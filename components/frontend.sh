@@ -12,6 +12,6 @@ mv frontend-main/* .
 mv static/* .
 rm -rf frontend-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
-sed -i -e '/catalogue/ s/localhost/catalogue.devopsb656.online/' -e '/users/ s/localhost/users.devopsb656.online/' -e '/cart/ s/localhost/cart.devopsb656.online/' /etc/nginx/default.d/roboshop.conf
+sed -i -e '/catalogue/ s/localhost/catalogue.devopsb656.online/' -e '/user/ s/localhost/user.devopsb656.online/' -e '/cart/ s/localhost/cart.devopsb656.online/' /etc/nginx/default.d/roboshop.conf
 systemctl restart nginx
 
