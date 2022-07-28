@@ -5,8 +5,8 @@ systemctl start mysqld
 
 MYSQL_DEFAULT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}')
 
-echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_PASSWORD}';" >tmp/mysql
-mysql -uroot -p"${MYSQL_DEFAULT_PASSWORD}" >tmp/mysql
+echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_PASSWORD}';" >/tmp/mysql
+mysql -uroot -p"${MYSQL_DEFAULT_PASSWORD}" >/tmp/mysql
 # mysql_secure_installation
 #```
 #
