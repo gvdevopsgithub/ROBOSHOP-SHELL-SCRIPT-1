@@ -1,29 +1,11 @@
 yum install python36 gcc python3-devel -y
-```
-
-1. Create a user for running the application
-
-```sql
-# useradd roboshop
-```
-
-1. Download the repo.
-
-```sql
-$ cd /home/roboshop
-$ curl -L -s -o /tmp/payment.zip "https://github.com/roboshop-devops-project/payment/archive/main.zip"
-$ unzip /tmp/payment.zip
-$ mv payment-main payment
-```
-
-1. Install the dependencies
-
-```bash
-# cd /home/roboshop/payment
-# pip3 install -r requirements.txt
-```
-
-**Note: Above command may fail with permission denied, So run as root user**
+useradd roboshop
+cd /home/roboshop
+curl -L -s -o /tmp/payment.zip "https://github.com/roboshop-devops-project/payment/archive/main.zip"
+unzip /tmp/payment.zip
+mv payment-main payment
+cd /home/roboshop/payment
+pip3 install -r requirements.txt
 
 1. Update the roboshop user and group id in `payment.ini` file.
 2. Update SystemD service file
@@ -34,11 +16,3 @@ $ mv payment-main payment
 
     Update `AMQPHOST` with RabbitMQ server ip.
 
-3. Setup the service
-
-```sql
-# mv /home/roboshop/payment/systemd.service /etc/systemd/system/payment.service
-# systemctl daemon-reload
-# systemctl enable payment
-# systemctl start payment
-```
