@@ -11,7 +11,10 @@ yum install nodejs -y &>>${LOG}
 CHECK_STAT $?
 
 PRINT "Creating Application User"
-useradd roboshop &>>${LOG}
+id roboshop &>>${LOG}
+if [ $? -ne 0 ]; then
+  useradd roboshop &>>${LOG}
+fi
 CHECK_STAT $?
 
 PRINT "Downloading Cart Content"
@@ -31,7 +34,7 @@ CHECK_STAT $?
 mv cart-main cart
 cd cart
 
-PRINTecho "Install NodeJS Dependencies for Cart Content"
+PRINT "Install NodeJS Dependencies for Cart Content"
 npm install &>>${LOG}
 CHECK_STAT $?
 
