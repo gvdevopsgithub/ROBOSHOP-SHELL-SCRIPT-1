@@ -2,7 +2,7 @@ source components/common.sh
 
 CHECK_ROOT
 
-echo "Setting Up nodeJS YUM Repo is failure"
+echo "Setting Up nodeJS YUM Repo is "
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${LOG}
 if [ $? -ne 0 ]; then
   echo FAILED
