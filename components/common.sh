@@ -106,6 +106,6 @@ NGINX () {
   CHECK_STAT $?
 
   PRINT "Start Nginx Service"
-  systemctl enable nginx &>>${LOG} && systemctl restart nginx &>>${LOG}
+  systemctl enable nginx &>>${LOG} && systemctl start nginx &>>${LOG}
   CHECK_STAT $?
 }
