@@ -1,3 +1,7 @@
+source components/common.sh
+
+CHECK_ROOT
+
 yum install nginx -y
 systemctl enable nginx
 systemctl start nginx
@@ -11,4 +15,3 @@ rm -rf frontend-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 sed -i -e '/catalogue/ s/localhost/catalogue.devopsb656.online/' -e '/user/ s/localhost/user.devopsb656.online/' -e '/cart/ s/localhost/cart.devopsb656.online/' /etc/nginx/default.d/roboshop.conf
 systemctl restart nginx
-
