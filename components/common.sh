@@ -89,7 +89,7 @@ NGINX () {
   CHECK_STAT $?
 
   PRINT "Clean OLD Content"
-  cd /usr/share/nginx/html &>>${LOG}
+  cd /usr/share/nginx/html
   rm -rf *
   CHECK_STAT $?
 
@@ -98,11 +98,11 @@ NGINX () {
   CHECK_STAT $?
 
   PRINT "Organize ${COMPONENT} content"
-  mv ${COMPONENT}-main/* . && mv static/* . && rm -rf ${COMPONENT}-main README.md && mv localhost.conf /etc/nginx/default.d/roboshop.conf &>>${LOG}
+  mv ${COMPONENT}-main/* . && mv static/* . && rm -rf ${COMPONENT}-main README.md && mv localhost.conf /etc/nginx/default.d/roboshop.conf
   CHECK_STAT $?
 
   PRINT "Update ${COMPONENT} Configuration"
-  sed -i -e '/catalogue/ s/localhost/catalogue.devopsb656.online/' -e '/user/ s/localhost/user.devopsb656.online/' -e '/cart/ s/localhost/cart.devopsb656.online/' /etc/nginx/default.d/roboshop.conf &>>${LOG}
+  sed -i -e '/catalogue/ s/localhost/catalogue.roboshop.internal/' -e '/user/ s/localhost/user.roboshop.internal/' -e '/cart/ s/localhost/cart.roboshop.internal/' /etc/nginx/default.d/roboshop.conf
   CHECK_STAT $?
 
   PRINT "Start Nginx Service"
