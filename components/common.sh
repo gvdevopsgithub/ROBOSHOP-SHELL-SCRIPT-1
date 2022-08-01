@@ -102,7 +102,7 @@ NGINX () {
   CHECK_STAT $?
 
   PRINT "Update ${COMPONENT} Configuration"
-  sed -i -e '/catalogue/ s/localhost/catalogue.roboshop.internal/' -e '/user/ s/localhost/user.roboshop.internal/' -e '/cart/ s/localhost/cart.roboshop.internal/' /etc/nginx/default.d/roboshop.conf
+  sed -i -e '/catalogue/ s/localhost/catalogue.roboshop.internal/' -e '/user/ s/localhost/user.roboshop.internal/' -e '/cart/ s/localhost/cart.roboshop.internal/' -e '/payment/ s/localhost/user.roboshop.internal/' -e '/shipping/ s/localhost/user.roboshop.internal/'/etc/nginx/default.d/roboshop.conf
   CHECK_STAT $?
 
   PRINT "Start Nginx Service"
