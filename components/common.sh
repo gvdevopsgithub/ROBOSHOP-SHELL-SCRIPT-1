@@ -142,7 +142,7 @@ PYTHON() {
   APP_COMMON_SETUP
 
   PRINT "Install ${COMPONENT} Dependencies"
-  mv payment-main payment && cd /home/roboshop/payment && pip3 install -r requirements.txt &>>${LOG}
+  mv ${COMPONENT}-main ${COMPONENT} && cd /home/roboshop/${COMPONENT} && pip3 install -r requirements.txt &>>${LOG}
   CHECK_STAT $?
 
   USER_ID=$(id -u roboshop)
