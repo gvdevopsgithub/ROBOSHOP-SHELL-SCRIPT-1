@@ -133,6 +133,7 @@ MAVEN() {
 }
 
 PYTHON() {
+
   CHECK_ROOT
 
   PRINT "Install python 3"
