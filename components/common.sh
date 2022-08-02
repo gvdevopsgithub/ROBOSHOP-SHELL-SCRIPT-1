@@ -49,8 +49,8 @@ APP_COMMON_SETUP() {
 }
 
 SYSTEMD() {
-  PRINT "Update SystemD Configuration"
-    set -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service &>>${LOG}
+    PRINT "Update SystemD Configuration"
+    set -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/users.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service &>>${LOG}
     CHECK_STAT $?
 
     PRINT "Setup SystemD Configuration"
@@ -131,6 +131,30 @@ MAVEN() {
 
   SYSTEMD
 }
+
+PYTHON() {
+  CHECK_ROOT
+
+  PRINT "Install python 3"
+  yum install python36 gcc python3-devel -y &>>${LOG}
+  CHECK_STAT $?
+
+  APP_COMMON_SETUP
+
+  PRINT "Install ${COMPONENT} Dependencies"
+  mv payment-main payment && cd /home/roboshop/payment && pip3 install -r requirements.txt &>>${LOG}
+  CHECK_STAT $?
+
+  USER_ID=$(id -u roboshop)
+  GROUP_ID=$(id -g roboshop)
+
+  PRINT "Update ${COMPONENT} Configuration"
+  sed -i -e "/^uid/ c uid = ${USER_ID}" -e "/^gid/ c gid = ${GROUP_ID}" /home/roboshop/${COMPONENT}/${COMPONENT}.ini
+  CHECK_STAT $?
+
+  SYSTEMD
+}
+
 
 
 
