@@ -39,5 +39,5 @@ CHECK_STAT $?
 PRINT "Load Schema"
 cd /tmp && unzip -o mysql.zip &>>${LOG} && cd mysql-main && mysql -u root -p"${MYSQL_PASSWORD}" <shipping.sql &>>${LOG}
 CHECK_STAT $?
-}
+
 
