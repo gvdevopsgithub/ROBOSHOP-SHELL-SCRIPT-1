@@ -16,7 +16,6 @@ yum install mysql-community-server -y &>>${LOG}
 systemctl enable mysqld &>>${LOG} && systemctl start mysqld &>>${LOG}
 CHECK_STAT $?
 
-
 MYSQL_DEFAULT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}')
 
 echo show databases | mysql -uroot -p"${MYSQL_PASSWORD}" &>>${LOG}
@@ -40,3 +39,5 @@ CHECK_STAT $?
 PRINT "Load Schema"
 cd /tmp && unzip mysql.zip &>>${LOG} && cd mysql-main && mysql -u root -p"${MYSQL_PASSWORD}" <shipping.sql &>>${LOG}
 CHECK_STAT $?
+}
+
