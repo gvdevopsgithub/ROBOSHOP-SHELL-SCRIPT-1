@@ -95,7 +95,7 @@ NGINX () {
 
   PRINT "Clean OLD Content"
   cd /usr/share/nginx/html
-  rm -rf *
+  rm -rf * &>>${LOG}
   CHECK_STAT $?
 
   PRINT "Extract ${COMPONENT} content"
@@ -107,7 +107,7 @@ NGINX () {
   CHECK_STAT $?
 
   PRINT "Update ${COMPONENT} Configuration"
-  sed -i -e '/catalogue/ s/localhost/catalogue.roboshop.internal/' -e '/user/ s/localhost/users.roboshop.internal/' -e '/cart/ s/localhost/cart.roboshop.internal/' -e '/payment/ s/localhost/payment.roboshop.internal/' -e '/shipping/ s/localhost/shipping.roboshop.internal/' /etc/nginx/default.d/roboshop.conf
+  sed -i -e '/catalogue/ s/localhost/catalogue.roboshop.internal/' -e '/user/ s/localhost/user.roboshop.internal/' -e '/cart/ s/localhost/cart.roboshop.internal/' -e '/payment/ s/localhost/payment.roboshop.internal/' -e '/shipping/ s/localhost/shipping.roboshop.internal/' /etc/nginx/default.d/roboshop.conf
   CHECK_STAT $?
 
   PRINT "Start Nginx Service"
