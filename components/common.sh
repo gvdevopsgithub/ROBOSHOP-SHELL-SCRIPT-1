@@ -135,7 +135,7 @@ MAVEN() {
 PYTHON() {
   CHECK_ROOT
 
-  PRINT "Install python"
+  PRINT "Install Python 3"
   yum install python36 gcc python3-devel -y &>>${LOG}
   CHECK_STAT $?
 
