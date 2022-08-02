@@ -4,8 +4,8 @@ cart:
 	@bash components/cart.sh
 shipping:
 	@bash components/shipping.sh
-users:
-	@bash components/users.sh
+user:
+	@bash components/user.sh
 mongodb:
 	@bash components/mongodb.sh
 frontend:
