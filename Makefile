@@ -10,8 +10,8 @@ mongodb:
 	@bash components/mongodb.sh
 frontend:
 	@bash components/frontend.sh
-payments:
-	@bash components/payments.sh
+payment:
+	@bash components/payment.sh
 rabbitmq:
 	@bash components/rabbitmq.sh
 catalogue:
