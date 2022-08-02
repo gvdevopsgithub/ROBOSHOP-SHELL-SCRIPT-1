@@ -1,4 +1,4 @@
-source component/common.sh
+source components/common.sh
 
 COMPONENT=payment
 PYTHON
